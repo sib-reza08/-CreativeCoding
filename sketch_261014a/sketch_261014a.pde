@@ -15,7 +15,7 @@ String[] mood_choice = {"good", "neutral", "bad"}; //array that stores the difer
 
 void setup() {
   size(1440, 900);
-  myVideoMorning = new Movie(this, "weather_video.mp4");
+  myVideoMorning = new Movie(this, "weather_video.mp4"); // this will load the video into the myVideoMorning variable, which will then be called later on in the draw() function
 
   myVideoMorning.loop();
 }
