@@ -20,7 +20,7 @@ void setup() {
 
 }
 void draw() {
-  // runs the code at 60 frames a second hopefully
+  // runs the code at 60 frames a second... hopefully
   
   background(0); // clears previous frame so moving/twinkling stars don't leave trails
   drawAnimatedStars(); // updates and draws the slower twinkling stars every frame, for now the function does not exist, but i will create it now
