@@ -25,25 +25,48 @@ void draw() {
   background(0); // clears previous frame so moving/twinkling stars don't leave trails
   drawAnimatedStars(); // updates and draws the slower twinkling stars every frame, for now the function does not exist, but i will create it now
 }
-  void buildConstellations() { // this will create my random stars as a background, which will glow aswell for a nice spacey effecet
-    stroke(255); // colour of stars for now
-    strokeWeight(1); // makes dot thick and easier to see
-    for (int i=0; i < 1000; i++) { //will hopefully make 1000 random stars pop up on screen as a background
+void buildConstellations() { // this will create my random stars as a background, which will glow aswell for a nice spacey effecet
+  stroke(255); // colour of stars for now
+  strokeWeight(1); // makes dot thick and easier to see
+  for (int i=0; i < 1000; i++) { //will hopefully make 1000 random stars pop up on screen as a background
     
     float x = random(width);
     float y = random(height);
     point(x,y); // sets random dots at the position the variables chose
     
   
-    }
+   }
     
+}
+
+void drawAnimatedStars() {
+  noStroke(); // keeps stars clean without outlines
+
+  for (int i = 0; i < numStars; i++) {
+    // this will move star very slowly and wrap around to the other side incase the stars fly off the screen never to be seen again
+    starX[i] += starSpeedX[i]; // the speed of the star moving left and right
+    starY[i] += starSpeedY[i]; // the speed of the star moving up and down
+    if (starX[i] < 0) starX[i] = width;
+    if (starX[i] > width) starX[i] = 0;
+    if (starY[i] < 0) starY[i] = height;
+    if (starY[i] > height) starY[i] = 0;
+
+    // this will create a slow gentle twinkle with no outer glowing
+    float twinkle = 0.5 + 0.5 * sin(frameCount * 0.015 + starPhase[i]); // slower sine wave between 0 and 1
+    float currentSize = starSize[i] * (0.85 + 0.25 * twinkle);
+    float coreAlpha = map(twinkle, 0, 1, 90, 255); // smooth brightness change
+
+    fill(255, coreAlpha); // single star core without any outer glow
+    ellipse(starX[i], starY[i], currentSize, currentSize);
   }
+}
+
   
-  void keyPressed() {
-    if (key == 'r' || key == 'R') {
+void keyPressed() {
+   if (key == 'r' || key == 'R') {
       background(0); // so a bunch of dots dont show up when i press r, (found out the hard way)
       buildConstellations(); // Re-randomizes all star positions on demand for a cooler effect
-    } else if (key == 's' || key == 'S') {
+   } else if (key == 's' || key == 'S') {
       saveFrame("random_mood_constellation.png");
     }
   }
