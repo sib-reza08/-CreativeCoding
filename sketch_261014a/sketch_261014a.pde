@@ -11,26 +11,27 @@ void setup() {
 
 
 }
-
-void buildConstellations() { // this will create my random stars as a background, which will glow aswell for a nice spacey effecet
- // where i will run code at hopefully a good stable 60 frames a second
-  stroke(255); // colour of stars for now
-  strokeWeight(1); // makes dot thick and easier to see
-  for (int i=0; i < 1000; i++) { //will hopefully make 1000 random stars pop up on screen as a background
+void draw() {
+  // runs the code at 60 frames a second hopefully
+}
+  void buildConstellations() { // this will create my random stars as a background, which will glow aswell for a nice spacey effecet
+    stroke(255); // colour of stars for now
+    strokeWeight(1); // makes dot thick and easier to see
+    for (int i=0; i < 1000; i++) { //will hopefully make 1000 random stars pop up on screen as a background
+    
+    float x = random(width);
+    float y = random(height);
+    point(x,y); // sets random dots at the position the variables chose
+    
   
-  float x = random(width);
-  float y = random(height);
-  point(x,y); // sets random dots at the position the variables chose
-  
-
+    }
+    
   }
   
-}
-
-void keyPressed() {
-  if (key == 'r' || key == 'R') {
-    buildConstellations(); // Re-randomizes all star positions on demand for a cooler effect
-  } else if (key == 's' || key == 'S') {
-    saveFrame("random_mood_constellation.png");
+  void keyPressed() {
+    if (key == 'r' || key == 'R') {
+      buildConstellations(); // Re-randomizes all star positions on demand for a cooler effect
+    } else if (key == 's' || key == 'S') {
+      saveFrame("random_mood_constellation.png");
+    }
   }
-}
