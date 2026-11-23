@@ -26,11 +26,11 @@ void draw() {
   drawAnimatedStars(); // updates and draws the slower twinkling stars every frame, for now the function does not exist, but i will create it now
 }
 void buildConstellations() { // this will create my random stars as a background, which will glow aswell for a nice spacey effecet
-   for (int i=0; i < numStars; i++) { //will hopefully make the 1000 random stars pop up on screen as a background
+   for (int i=0; i < numStars; i++) { // will hopefully make the 1000 random stars pop up on screen as a background
       starX[i] = random(width); // choses a random point with a value of 0 till the width set
       starY[i] = random(height);  // choses a random point with a value of 0 till the height set
-      starSpeedX[i] = random(-0.01, 0.01); // makes the stars move left and right slowly
-      starSpeedY[i] = random(-0.01, 0.01); // makes the stars move up and down slowly
+      starSpeedX[i] = random(-0.01, 0.01); // makes the stars move left and right super super slowly
+      starSpeedY[i] = random(-0.01, 0.01); // makes the stars move up and down super super slowly
       starPhase[i] = random(TWO_PI); // this will randomly choose a twinkle cycle for the star
       starSize[i] = random(1, 1); // this will make the stars look distant
 
