@@ -8,7 +8,8 @@ void setup() {
   size(1440, 900);
   surface.setLocation(200,50); // this will set my sketch window when i run my code to always open in the center of the screen (on my screen at home, idk about screens elsewhere...)
   background(0); //sets the background to black
-
+  
+  buildConstellations(); // initial canvas set up
 
 }
 void draw() {
@@ -30,6 +31,7 @@ void draw() {
   
   void keyPressed() {
     if (key == 'r' || key == 'R') {
+      background(0); // so a bunch of dots dont show up when i press r, (found out the hard way)
       buildConstellations(); // Re-randomizes all star positions on demand for a cooler effect
     } else if (key == 's' || key == 'S') {
       saveFrame("random_mood_constellation.png");
